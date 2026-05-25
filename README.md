@@ -1,0 +1,1 @@
+Neste repositorio tem exercicios que eu fiz ou estou fazendo para praticar programação. Os exercicios Estou tirando do exercism, que é um site que disposiniliza diversos exercicios dos principais conceitos de programação e que possui exercicios em diversas linguagens de programação
