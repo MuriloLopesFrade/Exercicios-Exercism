@@ -43,35 +43,42 @@ Alguns exemplos:
 
 texto = input("Informe o texto a ser traduzido: ").split()
 
-vogal = ['a','e','i','o','u']
-consoante = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
+def translate(texto):
+    vogal = ['a','e','i','o','u']
+    consoante = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z']
+    caractere_especial = ['xr','yt']
 
+    for i, palavra in enumerate(texto):
 
-# Regra 1
+        if palavra[0].lower() in vogal or palavra[:2].lower() in caractere_especial:
+            # Regra 1
+            palavra = palavra+'ay'
+            texto[i] = palavra
+        elif palavra[0].lower() in consoante:
+            # Regra 2
+            palavra = palavra+palavra[0]+'ay'
+            texto[i] = palavra
+        elif palavra[1].lower() in consoante and palavra[2].lower() in consoante:
+            # Regra 2
+            palavra = palavra+palavra[:2]+'ay'
+            texto[i] = palavra
+        elif palavra[1].lower() in consoante and palavra[2].lower() in consoante and palavra[3].lower() in consoante:
+            # Regra 2
+            palavra = palavra+palavra[:2]+'ay'
+            texto[i] = palavra
+        elif palavra[0] in consoante and palavra[1:3] in 'qu':
+            # Regra 3
+            palavra = palavra+palavra[:3]+'ay' ''' Revisar ''' 
+            texto[i] = palavra
+        elif palavra[:2] in 'qu':
+            # Regra 3
+            palavra = palavra+palavra[:2]+'ay' ''' Revisar ''' 
+            texto[i] = palavra
 
-for i, palavra in enumerate(texto):
-    if palavra[:1].lower() in vogal or palavra[:2].lower() in ['xr','yt']:
-        palavra = palavra+'ay'
+        # Regra 4
+        
 
-    texto[i] = palavra
-    
-
-# Regra 2
-for i, palavra in enumerate(texto):
-    if palavra[:1].lower() in consoante or palavra[:2].lower() in consoante:
-        palavra = palavra+'ay'
-
-    texto[i] = palavra
-
-# Regra 3
-
-
-# Regra 4
-
-
-
-
-
-texto = " ".join(texto)
-print(" ")
-print("Texto traduzido ==> "+ texto)
+        texto = " ".join(texto)
+        print(" ")
+        print("Texto traduzido ==> "+ texto)
+        
